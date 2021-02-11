@@ -2,18 +2,17 @@ package org.example.matcher;
 
 import org.example.Config;
 
-public class AlignmentMatcherFactory {
+public class MatcherFactory {
 
-    public static AlignmentMatcher getMatcher(Config.Alignment alignment) {
+    public static Matcher getMatcher(Config.Alignment alignment) {
 
         switch (alignment) {
 
             case ENDS:
-                return new EndsAlignmentMatcher();
+                return new EndsMatcher();
             case MID:
-                return new MidAlignmentMatcher();
             case BEST:
-                return new BestAlignmentMatcher();
+                return new InMatcher();
             default:
                 throw new IllegalStateException("Unexpected value: " + alignment);
         }

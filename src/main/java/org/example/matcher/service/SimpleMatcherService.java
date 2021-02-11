@@ -1,17 +1,19 @@
-package org.example.matcher;
+package org.example.matcher.service;
 
 import org.example.Config;
+import org.example.matcher.MatchGroup;
+import org.example.matcher.Matcher;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MatcherService {
+public class SimpleMatcherService implements MatcherService {
 
-    private AlignmentMatcher matcher;
+    private Matcher matcher;
 
-    public MatcherService(AlignmentMatcher matcher) {
+    public SimpleMatcherService(Matcher matcher) {
         this.matcher = matcher;
     }
 
@@ -30,11 +32,15 @@ public class MatcherService {
             matchGroups.add(matchGroup);
         }
 
+        collectUnmatched(matchGroups, unmatched);
+
+        return matchGroups;
+    }
+
+    private void collectUnmatched(List<MatchGroup> matchGroups, Set<String> unmatched) {
         MatchGroup unmatchedGroup = new MatchGroup("unmatched");
         unmatchedGroup.addAll(unmatched);
         matchGroups.add(unmatchedGroup);
-
-        return matchGroups;
     }
 
 }

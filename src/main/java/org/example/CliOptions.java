@@ -3,7 +3,7 @@ package org.example;
 import com.beust.jcommander.IStringConverter;
 import com.beust.jcommander.Parameter;
 
-public class CommandLineOptions {
+public class CliOptions {
 
     @Parameter(names = {"-sf", "--sequenceFile"}, required = true)
     private String sequenceDataFilePath;
