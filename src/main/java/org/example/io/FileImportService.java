@@ -9,12 +9,11 @@ import org.example.config.Group;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 public class FileImportService implements ImportService {
 
@@ -39,11 +38,10 @@ public class FileImportService implements ImportService {
     }
 
     private List<Group> readGroup(Iterator<Map.Entry<String, JsonNode>> groupNodes) {
-        List<Group> groups = new ArrayList<>();
+        List<Group> groups = new LinkedList<>();
         groupNodes.forEachRemaining(entry -> {
             JsonNode groupElements = entry.getValue();
             String groupName = entry.getKey();
-            //TODO builder
             String prefix = groupElements.has(PREFIX) ? groupElements.get(PREFIX).asText() : null;
             String infix = groupElements.has(INFIX) ? groupElements.get(INFIX).asText() : null;
             String postfix = groupElements.has(POSTFIX) ? groupElements.get(POSTFIX).asText() : null;
@@ -53,10 +51,10 @@ public class FileImportService implements ImportService {
     }
 
     @Override
-    public Set<String> importSequences(String path) throws IOException {
+    public List<String> importSequences(String path) throws IOException {
         Scanner sc = new Scanner(new File(path));
 
-        Set<String> sequences = new HashSet<>();
+        List<String> sequences = new ArrayList<>();
         while (sc.hasNextLine()) {
             sequences.add(sc.nextLine());
         }

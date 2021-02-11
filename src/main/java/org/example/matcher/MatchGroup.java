@@ -1,23 +1,23 @@
 package org.example.matcher;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MatchGroup {
 
     private String groupName;
-    private Set<String> sequences;
+    private List<String> sequences;
 
     public MatchGroup(String groupName) {
         this.groupName = groupName;
-        this.sequences = new HashSet<>();
+        this.sequences = new LinkedList<>();
     }
 
     public void add(String sequence) {
         sequences.add(sequence);
     }
 
-    public void addAll(Set<String> sequences) {
+    public void addAll(List<String> sequences) {
         this.sequences.addAll(sequences);
     }
 
@@ -25,7 +25,7 @@ public class MatchGroup {
         return groupName;
     }
 
-    public Set<String> getSequences() {
+    public List<String> getSequences() {
         return sequences;
     }
 }

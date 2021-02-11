@@ -1,5 +1,6 @@
 package org.example.config;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class Config {
     }
 
     public List<Group> getGroups(Alignment alignment) {
-        return groups.get(alignment);
+        return Collections.unmodifiableList(groups.get(alignment));
     }
 
 }

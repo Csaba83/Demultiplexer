@@ -4,10 +4,9 @@ import org.example.config.Group;
 import org.example.matcher.MatchGroup;
 import org.example.matcher.Matcher;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class SimpleMatcherService implements MatcherService {
 
@@ -17,9 +16,9 @@ public class SimpleMatcherService implements MatcherService {
         this.matcher = matcher;
     }
 
-    public List<MatchGroup> match(Set<String> sequences, List<Group> groups) {
-        List<MatchGroup> matchGroups = new ArrayList<>();
-        Set<String> unmatched = new HashSet<>(sequences);
+    public List<MatchGroup> match(Collection<String> sequences, List<Group> groups) {
+        List<MatchGroup> matchGroups = new LinkedList<>();
+        List<String> unmatched = new LinkedList<>(sequences);
 
         for (Group group : groups) {
             MatchGroup matchGroup = new MatchGroup(group.getName());
@@ -37,7 +36,7 @@ public class SimpleMatcherService implements MatcherService {
         return matchGroups;
     }
 
-    private void collectUnmatched(List<MatchGroup> matchGroups, Set<String> unmatched) {
+    private void collectUnmatched(List<MatchGroup> matchGroups, List<String> unmatched) {
         MatchGroup unmatchedGroup = new MatchGroup("unmatched");
         unmatchedGroup.addAll(unmatched);
         matchGroups.add(unmatchedGroup);

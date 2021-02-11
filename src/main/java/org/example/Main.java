@@ -24,7 +24,7 @@ public class Main {
 
         FileImportService fileImportService = new FileImportService();
         Config config = fileImportService.importConfig(cliOptions.getConfigFilePath());
-        Set<String> sequences = fileImportService.importSequences(cliOptions.getSequenceDataFilePath());
+        List<String> sequences = fileImportService.importSequences(cliOptions.getSequenceDataFilePath());
 
         MatcherService matcherService = MatcherServiceFactory.getMatcherService(cliOptions.getAlignment());
         List<Group> groups = config.getGroups(cliOptions.getAlignment());

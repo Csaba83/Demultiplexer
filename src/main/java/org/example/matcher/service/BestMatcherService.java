@@ -3,23 +3,22 @@ package org.example.matcher.service;
 import org.example.config.Group;
 import org.example.matcher.MatchGroup;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class BestMatcherService implements MatcherService {
     @Override
-    public List<MatchGroup> match(Set<String> sequences, List<Group> groups) {
-        List<MatchGroup> matchGroups = new ArrayList<>();
-        Set<String> unmatched = new HashSet<>(sequences);
+    public List<MatchGroup> match(Collection<String> sequences, List<Group> groups) {
+        List<MatchGroup> matchGroups = new LinkedList<>();
+        List<String> unmatched = new LinkedList<>(sequences);
 
         for (Group group : groups) {
             MatchGroup matchGroup = new MatchGroup(group.getName());
             String inputPattern = group.getInfix();
             for (int length = inputPattern.length(); length > 0; length--) {
-                Set<String> patterns = getSubstringsInLength(inputPattern, length);
-                Set<String> sequencesContainsPatterns = getSequencesContainsPatterns(sequences, patterns);
+                List<String> patterns = getSubstringsInLength(inputPattern, length);
+                List<String> sequencesContainsPatterns = getSequencesContainsPatterns(sequences, patterns);
                 if (!sequencesContainsPatterns.isEmpty()) {
                     matchGroup.addAll(sequencesContainsPatterns);
                     matchGroups.add(matchGroup);
@@ -34,8 +33,8 @@ public class BestMatcherService implements MatcherService {
         return matchGroups;
     }
 
-    private Set<String> getSubstringsInLength(String pattern, int length) {
-        Set<String> subStrings = new HashSet<>();
+    private List<String> getSubstringsInLength(String pattern, int length) {
+        List<String> subStrings = new LinkedList<>();
         for (int beginIndex = 0; beginIndex < pattern.length() - length; beginIndex++) {
             int endIndex = beginIndex + length;
             if ( endIndex < pattern.length()) {
@@ -45,8 +44,8 @@ public class BestMatcherService implements MatcherService {
         return subStrings;
     }
 
-    private Set<String> getSequencesContainsPatterns(Set<String> sequences, Set<String> patterns) {
-        Set<String> sequencesContainsPatterns = new HashSet<>();
+    private List<String> getSequencesContainsPatterns(Collection<String> sequences, List<String> patterns) {
+        List<String> sequencesContainsPatterns = new LinkedList<>();
         for (String pattern : patterns) {
             sequencesContainsPatterns.addAll(getSequencesContainsParticularPattern(sequences, pattern));
         }
@@ -54,8 +53,8 @@ public class BestMatcherService implements MatcherService {
     }
 
 
-    private Set<String> getSequencesContainsParticularPattern(Set<String> sequences, String pattern) {
-        Set<String> matchingSequences = new HashSet<>();
+    private List<String> getSequencesContainsParticularPattern(Collection<String> sequences, String pattern) {
+        List<String> matchingSequences = new LinkedList<>();
         for (String sequence : sequences) {
             if (sequence.contains(pattern)) {
                 matchingSequences.add(sequence);
@@ -65,7 +64,7 @@ public class BestMatcherService implements MatcherService {
         return matchingSequences;
     }
 
-    private void collectUnmatched(List<MatchGroup> matchGroups, Set<String> unmatched) {
+    private void collectUnmatched(List<MatchGroup> matchGroups, List<String> unmatched) {
         MatchGroup unmatchedGroup = new MatchGroup("unmatched");
         unmatchedGroup.addAll(unmatched);
         matchGroups.add(unmatchedGroup);
