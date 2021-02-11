@@ -2,6 +2,7 @@ package org.example;
 
 import com.beust.jcommander.IStringConverter;
 import com.beust.jcommander.Parameter;
+import org.example.config.Alignment;
 
 public class CliOptions {
 
@@ -15,7 +16,7 @@ public class CliOptions {
     private String outputFilePath;
 
     @Parameter(names = {"-a", "--alignment"}, required = true, converter = AlignmentConverter.class)
-    private Config.Alignment alignment;
+    private Alignment alignment;
 
     public String getSequenceDataFilePath() {
         return sequenceDataFilePath;
@@ -29,15 +30,15 @@ public class CliOptions {
         return outputFilePath;
     }
 
-    public Config.Alignment getAlignment() {
+    public Alignment getAlignment() {
         return alignment;
     }
 
-    private static class AlignmentConverter implements IStringConverter<Config.Alignment> {
+    private static class AlignmentConverter implements IStringConverter<Alignment> {
 
         @Override
-        public Config.Alignment convert(String s) {
-            return Config.Alignment.getValueByName(s);
+        public Alignment convert(String s) {
+            return Alignment.getValueByName(s);
         }
     }
 }

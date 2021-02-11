@@ -1,10 +1,10 @@
 package org.example.matcher;
 
-import org.example.Config;
+import org.example.config.Group;
 
 public class InMatcher implements Matcher {
     @Override
-    public boolean match(String sequence, Config.AlignmentGroup alignmentGroup) {
-        return sequence.contains(alignmentGroup.getInfix());
+    public boolean match(String sequence, Group group) {
+        return sequence.contains(group.getInfix());
     }
 }

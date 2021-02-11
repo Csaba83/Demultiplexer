@@ -1,6 +1,8 @@
 package org.example;
 
 import com.beust.jcommander.JCommander;
+import org.example.config.Config;
+import org.example.config.Group;
 import org.example.io.FileExportService;
 import org.example.io.FileImportService;
 import org.example.matcher.MatchGroup;
@@ -25,7 +27,7 @@ public class Main {
         Set<String> sequences = fileImportService.importSequences(cliOptions.getSequenceDataFilePath());
 
         MatcherService matcherService = MatcherServiceFactory.getMatcherService(cliOptions.getAlignment());
-        List<Config.AlignmentGroup> groups = config.getGroups(cliOptions.getAlignment());
+        List<Group> groups = config.getGroups(cliOptions.getAlignment());
         List<MatchGroup> matchResults = matcherService.match(sequences, groups);
 
         FileExportService fileExportService = new FileExportService();

@@ -2,7 +2,9 @@ package org.example.io;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.Config;
+import org.example.config.Alignment;
+import org.example.config.Config;
+import org.example.config.Group;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class FileImportService implements ImportService {
         Config config = new Config();
 
         JsonNode root = mapper.readTree(new File(path));
-        for (Config.Alignment alignment : Config.Alignment.values()) {
+        for (Alignment alignment : Alignment.values()) {
             if (root.has(alignment.getName())) {
                 JsonNode alignmentNode = root.get(alignment.getName());
                 Iterator<Map.Entry<String, JsonNode>> groupNodes = alignmentNode.fields();
@@ -36,8 +38,8 @@ public class FileImportService implements ImportService {
         return config;
     }
 
-    private List<Config.AlignmentGroup> readGroup(Iterator<Map.Entry<String, JsonNode>> groupNodes) {
-        List<Config.AlignmentGroup> alignmentGroups = new ArrayList<>();
+    private List<Group> readGroup(Iterator<Map.Entry<String, JsonNode>> groupNodes) {
+        List<Group> groups = new ArrayList<>();
         groupNodes.forEachRemaining(entry -> {
             JsonNode groupElements = entry.getValue();
             String groupName = entry.getKey();
@@ -45,9 +47,9 @@ public class FileImportService implements ImportService {
             String prefix = groupElements.has(PREFIX) ? groupElements.get(PREFIX).asText() : null;
             String infix = groupElements.has(INFIX) ? groupElements.get(INFIX).asText() : null;
             String postfix = groupElements.has(POSTFIX) ? groupElements.get(POSTFIX).asText() : null;
-            alignmentGroups.add(new Config.AlignmentGroup(groupName, prefix, infix, postfix));
+            groups.add(new Group(groupName, prefix, infix, postfix));
         });
-        return alignmentGroups;
+        return groups;
     }
 
     @Override

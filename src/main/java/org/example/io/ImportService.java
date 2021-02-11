@@ -1,6 +1,6 @@
 package org.example.io;
 
-import org.example.Config;
+import org.example.config.Config;
 
 import java.io.IOException;
 import java.util.Collection;

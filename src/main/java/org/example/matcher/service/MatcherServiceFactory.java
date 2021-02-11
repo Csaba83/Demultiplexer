@@ -1,11 +1,11 @@
 package org.example.matcher.service;
 
-import org.example.Config;
+import org.example.config.Alignment;
 import org.example.matcher.MatcherFactory;
 
 public class MatcherServiceFactory {
 
-    public static MatcherService getMatcherService(Config.Alignment alignment) {
+    public static MatcherService getMatcherService(Alignment alignment) {
         switch (alignment) {
 
             case ENDS:

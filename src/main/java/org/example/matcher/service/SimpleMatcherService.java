@@ -1,6 +1,6 @@
 package org.example.matcher.service;
 
-import org.example.Config;
+import org.example.config.Group;
 import org.example.matcher.MatchGroup;
 import org.example.matcher.Matcher;
 
@@ -17,11 +17,11 @@ public class SimpleMatcherService implements MatcherService {
         this.matcher = matcher;
     }
 
-    public List<MatchGroup> match(Set<String> sequences, List<Config.AlignmentGroup> groups) {
+    public List<MatchGroup> match(Set<String> sequences, List<Group> groups) {
         List<MatchGroup> matchGroups = new ArrayList<>();
         Set<String> unmatched = new HashSet<>(sequences);
 
-        for (Config.AlignmentGroup group : groups) {
+        for (Group group : groups) {
             MatchGroup matchGroup = new MatchGroup(group.getName());
             for (String sequence: sequences) {
                 if (matcher.match(sequence, group)) {

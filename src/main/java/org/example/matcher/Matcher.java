@@ -1,8 +1,8 @@
 package org.example.matcher;
 
-import org.example.Config;
+import org.example.config.Group;
 
 public interface Matcher {
 
-    boolean match(String sequence, Config.AlignmentGroup alignmentGroup);
+    boolean match(String sequence, Group group);
 }

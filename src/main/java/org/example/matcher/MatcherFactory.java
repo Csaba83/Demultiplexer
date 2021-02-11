@@ -1,10 +1,10 @@
 package org.example.matcher;
 
-import org.example.Config;
+import org.example.config.Alignment;
 
 public class MatcherFactory {
 
-    public static Matcher getMatcher(Config.Alignment alignment) {
+    public static Matcher getMatcher(Alignment alignment) {
 
         switch (alignment) {
 
