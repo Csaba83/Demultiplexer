@@ -9,6 +9,7 @@ import org.demultiplexer.config.Group;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -62,6 +63,6 @@ public class FileImportService implements ImportService {
         while (sc.hasNextLine()) {
             sequences.add(sc.nextLine());
         }
-        return sequences;
+        return Collections.unmodifiableList(sequences);
     }
 }
