@@ -11,7 +11,6 @@ import org.example.matcher.service.MatcherServiceFactory;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 public class Main {
 
@@ -31,6 +30,6 @@ public class Main {
         List<MatchGroup> matchResults = matcherService.match(sequences, groups);
 
         FileExportService fileExportService = new FileExportService();
-        fileExportService.export(matchResults, cliOptions.getOutputFilePath());
+        fileExportService.export(matchResults, cliOptions.getOutputDirectory());
     }
 }

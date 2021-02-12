@@ -6,14 +6,14 @@ import org.example.config.Alignment;
 
 public class CliOptions {
 
-    @Parameter(names = {"-sf", "--sequenceFile"}, required = true)
+    @Parameter(names = {"-s", "--sequenceFile"}, required = true)
     private String sequenceDataFilePath;
 
-    @Parameter(names = {"-cf", "--configFile"}, required = true)
+    @Parameter(names = {"-c", "--configFile"}, required = true)
     private String configFilePath;
 
-    @Parameter(names = {"-of", "--outputFile"}, required = true)
-    private String outputFilePath;
+    @Parameter(names = {"-o", "--outputDirectory"}, required = true)
+    private String outputDirectory;
 
     @Parameter(names = {"-a", "--alignment"}, required = true, converter = AlignmentConverter.class)
     private Alignment alignment;
@@ -26,8 +26,8 @@ public class CliOptions {
         return configFilePath;
     }
 
-    public String getOutputFilePath() {
-        return outputFilePath;
+    public String getOutputDirectory() {
+        return outputDirectory;
     }
 
     public Alignment getAlignment() {

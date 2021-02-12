@@ -9,7 +9,7 @@ public class Group {
     private String infix;
     private String postfix;
 
-    public Group(String name, String prefix, String infix, String postfix) {
+    private Group(String name, String prefix, String infix, String postfix) {
         this.name = name;
         this.prefix = prefix;
         this.infix = infix;
@@ -46,4 +46,33 @@ public class Group {
     }
 
 
+    public static class GroupBuilder {
+        private String name;
+        private String prefix = "";
+        private String infix = "";
+        private String postfix = "";
+
+        public GroupBuilder(String name) {
+            this.name = name;
+        }
+
+        public GroupBuilder setPrefix(String prefix) {
+            this.prefix = prefix;
+            return this;
+        }
+
+        public GroupBuilder setInfix(String infix) {
+            this.infix = infix;
+            return this;
+        }
+
+        public GroupBuilder setPostfix(String postfix) {
+            this.postfix = postfix;
+            return this;
+        }
+
+        public Group createGroup() {
+            return new Group(name, prefix, infix, postfix);
+        }
+    }
 }

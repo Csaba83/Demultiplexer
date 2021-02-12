@@ -1,7 +1,8 @@
 package org.example.matcher.service;
 
 import org.example.config.Alignment;
-import org.example.matcher.MatcherFactory;
+import org.example.matcher.EndsMatcher;
+import org.example.matcher.MidMatcher;
 
 public class MatcherServiceFactory {
 
@@ -9,8 +10,9 @@ public class MatcherServiceFactory {
         switch (alignment) {
 
             case ENDS:
+                return new SimpleMatcherService(new EndsMatcher());
             case MID:
-                return new SimpleMatcherService(MatcherFactory.getMatcher(alignment));
+                return new SimpleMatcherService(new MidMatcher());
             case BEST:
                 return new BestMatcherService();
             default:

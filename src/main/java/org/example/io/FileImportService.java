@@ -45,7 +45,11 @@ public class FileImportService implements ImportService {
             String prefix = groupElements.has(PREFIX) ? groupElements.get(PREFIX).asText() : null;
             String infix = groupElements.has(INFIX) ? groupElements.get(INFIX).asText() : null;
             String postfix = groupElements.has(POSTFIX) ? groupElements.get(POSTFIX).asText() : null;
-            groups.add(new Group(groupName, prefix, infix, postfix));
+            groups.add(new Group.GroupBuilder(groupName)
+                    .setPrefix(prefix)
+                    .setInfix(infix)
+                    .setPostfix(postfix)
+                    .createGroup());
         });
         return groups;
     }
