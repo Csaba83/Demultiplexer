@@ -4,6 +4,7 @@ import org.example.config.Group;
 import org.example.matcher.MatchGroup;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,21 +17,27 @@ public class BestMatcherService implements MatcherService {
         for (Group group : groups) {
             MatchGroup matchGroup = new MatchGroup(group.getName());
             String inputPattern = group.getInfix();
-            for (int length = inputPattern.length(); length > 0; length--) {
-                List<String> patterns = getSubstringsInLength(inputPattern, length);
-                List<String> sequencesContainsPatterns = getSequencesContainsPatterns(sequences, patterns);
-                if (!sequencesContainsPatterns.isEmpty()) {
-                    matchGroup.addAll(sequencesContainsPatterns);
-                    unmatched.removeAll(sequencesContainsPatterns);
-                    break;
-                }
-            }
+            List<String> sequencesContainsTheLongestSubpattern =
+                    getSequencesContainsTheLongestSubpattern(sequences, inputPattern);
+            matchGroup.addAll(sequencesContainsTheLongestSubpattern);
+            unmatched.removeAll(sequencesContainsTheLongestSubpattern);
             matchGroups.add(matchGroup);
         }
 
         collectUnmatched(matchGroups, unmatched);
 
         return matchGroups;
+    }
+
+    private List<String> getSequencesContainsTheLongestSubpattern(Collection<String> sequences, String pattern) {
+        for (int length = pattern.length(); length > 0; length--) {
+            List<String> subPatterns = getSubstringsInLength(pattern, length);
+            List<String> sequencesContainsPatterns = getSequencesContainsPatterns(sequences, subPatterns);
+            if (!sequencesContainsPatterns.isEmpty()) {
+                return sequencesContainsPatterns;
+            }
+        }
+        return Collections.emptyList();
     }
 
     private List<String> getSubstringsInLength(String pattern, int length) {
