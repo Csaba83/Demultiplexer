@@ -15,6 +15,11 @@ public enum Alignment {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public static Alignment getValueByName(String name) {
         for (Alignment value: values()) {
             if (value.name.equals(name)) {
