@@ -1,6 +1,6 @@
-package org.example.matcher;
+package org.demultiplexer.matcher;
 
-import org.example.config.Group;
+import org.demultiplexer.config.Group;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,8 +1,8 @@
-package org.example.matcher.service;
+package org.demultiplexer.matcher.service;
 
-import org.example.config.Alignment;
-import org.example.matcher.EndsMatcher;
-import org.example.matcher.MidMatcher;
+import org.demultiplexer.config.Alignment;
+import org.demultiplexer.matcher.EndsMatcher;
+import org.demultiplexer.matcher.MidMatcher;
 
 public class MatcherServiceFactory {
 

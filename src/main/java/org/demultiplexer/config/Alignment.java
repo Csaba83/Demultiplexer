@@ -1,4 +1,4 @@
-package org.example.config;
+package org.demultiplexer.config;
 
 public enum Alignment {
     ENDS("endsAlignment"),

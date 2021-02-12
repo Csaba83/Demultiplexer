@@ -1,7 +1,7 @@
-package org.example.matcher.service;
+package org.demultiplexer.matcher.service;
 
-import org.example.config.Group;
-import org.example.matcher.MatchGroup;
+import org.demultiplexer.config.Group;
+import org.demultiplexer.matcher.MatchGroup;
 
 import java.util.Collection;
 import java.util.List;

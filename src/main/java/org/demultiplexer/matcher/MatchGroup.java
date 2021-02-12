@@ -1,4 +1,4 @@
-package org.example.matcher;
+package org.demultiplexer.matcher;
 
 import java.util.LinkedList;
 import java.util.List;

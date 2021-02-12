@@ -1,6 +1,6 @@
-package org.example.io;
+package org.demultiplexer.io;
 
-import org.example.config.Config;
+import org.demultiplexer.config.Config;
 
 import java.io.IOException;
 import java.util.Collection;

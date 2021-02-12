@@ -1,8 +1,8 @@
-package org.example.matcher.service;
+package org.demultiplexer.matcher.service;
 
-import org.example.config.Group;
-import org.example.matcher.MatchGroup;
-import org.example.matcher.Matcher;
+import org.demultiplexer.config.Group;
+import org.demultiplexer.matcher.MatchGroup;
+import org.demultiplexer.matcher.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

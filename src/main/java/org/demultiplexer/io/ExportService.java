@@ -1,6 +1,6 @@
-package org.example.io;
+package org.demultiplexer.io;
 
-import org.example.matcher.MatchGroup;
+import org.demultiplexer.matcher.MatchGroup;
 
 import java.io.IOException;
 import java.util.List;

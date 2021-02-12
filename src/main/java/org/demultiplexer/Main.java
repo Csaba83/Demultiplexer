@@ -1,13 +1,13 @@
-package org.example;
+package org.demultiplexer;
 
 import com.beust.jcommander.JCommander;
-import org.example.config.Config;
-import org.example.config.Group;
-import org.example.io.FileExportService;
-import org.example.io.FileImportService;
-import org.example.matcher.MatchGroup;
-import org.example.matcher.service.MatcherService;
-import org.example.matcher.service.MatcherServiceFactory;
+import org.demultiplexer.config.Config;
+import org.demultiplexer.config.Group;
+import org.demultiplexer.io.FileExportService;
+import org.demultiplexer.io.FileImportService;
+import org.demultiplexer.matcher.MatchGroup;
+import org.demultiplexer.matcher.service.MatcherService;
+import org.demultiplexer.matcher.service.MatcherServiceFactory;
 
 import java.io.IOException;
 import java.util.List;

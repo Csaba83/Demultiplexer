@@ -1,10 +1,10 @@
-package org.example.io;
+package org.demultiplexer.io;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.config.Alignment;
-import org.example.config.Config;
-import org.example.config.Group;
+import org.demultiplexer.config.Alignment;
+import org.demultiplexer.config.Config;
+import org.demultiplexer.config.Group;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,8 +1,8 @@
-package org.example;
+package org.demultiplexer;
 
 import com.beust.jcommander.IStringConverter;
 import com.beust.jcommander.Parameter;
-import org.example.config.Alignment;
+import org.demultiplexer.config.Alignment;
 
 public class CliOptions {
 
