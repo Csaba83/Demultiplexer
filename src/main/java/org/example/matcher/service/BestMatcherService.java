@@ -21,11 +21,11 @@ public class BestMatcherService implements MatcherService {
                 List<String> sequencesContainsPatterns = getSequencesContainsPatterns(sequences, patterns);
                 if (!sequencesContainsPatterns.isEmpty()) {
                     matchGroup.addAll(sequencesContainsPatterns);
-                    matchGroups.add(matchGroup);
                     unmatched.removeAll(sequencesContainsPatterns);
                     break;
                 }
             }
+            matchGroups.add(matchGroup);
         }
 
         collectUnmatched(matchGroups, unmatched);
@@ -35,9 +35,9 @@ public class BestMatcherService implements MatcherService {
 
     private List<String> getSubstringsInLength(String pattern, int length) {
         List<String> subStrings = new LinkedList<>();
-        for (int beginIndex = 0; beginIndex < pattern.length() - length; beginIndex++) {
+        for (int beginIndex = 0; beginIndex <= pattern.length() - length; beginIndex++) {
             int endIndex = beginIndex + length;
-            if ( endIndex < pattern.length()) {
+            if ( endIndex <= pattern.length()) {
                 subStrings.add(pattern.substring(beginIndex, endIndex));
             }
         }
